@@ -1,3 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.navbar {
+  @apply flex justify-between items-center fixed w-full top-0 h-[52px] shadow-sm bg-white;
+}
+
+.navbar_logo {
+  @apply text-blue-800 text-lg font-semibold cursor-pointer px-[18px];
+}
+
+.navbar_list {
+  @apply px-[18px] flex gap-3 items-center;
+}
+
+.navbar_button {
+  @apply hidden cursor-pointer;
+}
+
+.navbar_list-item {
+  @apply cursor-pointer hover:text-gray-600;
+}
+
+.layout {
+  @apply pt-[52px];
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar-mobile {
+    @apply flex fixed  w-full top-[52px] h-screen bg-blue-800 text-white;
+  }
+
+  .navbar_list {
+    @apply hidden;
+  }
+
+  .navbar_button {
+    @apply block px-[18px];
+  }
+
+  .navbar_list-item-mobile {
+    @apply cursor-pointer hover:text-gray-600;
+  }
+
+  .navbar_list-mobile {
+    @apply flex flex-col gap-4 items-start py-6 px-[18px];
+  }
+}
