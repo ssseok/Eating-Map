@@ -1,5 +1,9 @@
-import Layout from '@/components/Layout';
+import Map from '@/components/Map';
 
 export default function Home() {
-  return <div>홈 페이지</div>;
+  return (
+    <>
+      <Map />
+    </>
+  );
 }
