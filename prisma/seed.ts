@@ -4,25 +4,23 @@ import * as data from '../src/data/store_data.json';
 const prisma = new PrismaClient();
 
 async function seedData() {
-    await Promise.all(
-        data?.['DATA']?.map(async (store) => {
-            const storeData = {
-                phone: store?.tel_no,
-                address: store?.rdn_code_nm,
-                lat: store?.y_dnts,
-                lng: store?.x_cnts,
-                name: store?.upso_nm,
-                category: store?.bizcnd_code_nm,
-                storeType: store?.cob_code_nm,
-                foodCertifyName: store?.crtfc_gbn_nm,
-            };
+    data?.['DATA']?.map(async (store) => {
+        const storeData = {
+            phone: store?.tel_no,
+            storeType: store?.cob_code_nm,
+            category: store?.bizcnd_code_nm,
+            name: store?.upso_nm,
+            lng: store?.x_cnts,
+            lat: store?.y_dnts,
+            address: store?.rdn_code_nm,
+            foodCertifyName: store?.crtfc_gbn_nm,
+        };
 
-            const res = await prisma.store.create({
-                data: storeData,
-            });
-            console.log(res);
-        })
-    );
+        const res = await prisma.store.create({
+            data: storeData,
+        });
+        console.log(res);
+    });
 }
 
 async function main() {
@@ -34,6 +32,6 @@ main()
         console.log(e);
         process.exit(1);
     })
-    .finally(async () => {
-        await prisma.$disconnect();
+    .finally(() => {
+        prisma.$disconnect();
     });
