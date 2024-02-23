@@ -37,4 +37,3 @@ function useIntersectionObserver(
 }
 
 export default useIntersectionObserver;
-w
